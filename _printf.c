@@ -12,35 +12,38 @@ int _printf(const char *format, ...)
 	va_list list;
 
 	va_start(list, format);
+	if (format == NULL || format[i] == '\0')
+		return (-1);
+
 	while (format && format[i])
 	{
-		if ((format[i] != '%') && (format[i] != '\\'))
-			_putchar(format[i]);
-		else
+		if (format[i] == '%')
 		{
-			if (format[i] == '%')
+			if (format[i + 1] == '%')
 			{
-				if (format[i + 1] == '%')
-					_putchar('%');
-				else
+				_putchar('%');
+
+			}
+			else
+			{
+				while (j < 4)
 				{
-					while (j < 4)
+					if (format[i + 1] == struc1[j].ele)
 					{
-						if (format[i+1] == struc1[j].ele)
-						{
-							struc1[j].func(list);
-							a = 1;
-						}
-						j++;
+						struc1[j].func(list);
+						a = 1;
 					}
-					j = 0;
-					if (a == 1)
-					i++;
+					j++;
 				}
+				j = 0;
+				if (a == 1)
+					i++;
 			}
 		}
+		else
+			_putchar(format[i]);
 		i++;
 	}
-	return(i);
+	return (i);
 	va_end(list);
 }

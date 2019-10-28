@@ -27,7 +27,6 @@ void print_str(va_list list)
 			i++;
 		}
 	}
-	return;
 }
 /**
 *print_dec - prints a given decimal base 10
@@ -36,9 +35,12 @@ void print_str(va_list list)
 void print_dec(va_list list)
 {
 	int l;
+
 	l = va_arg(list, int);
 	print_number(l);
+
 }
+
 /**
 *print_int - prints a given integer
 *@list: int to be printed
