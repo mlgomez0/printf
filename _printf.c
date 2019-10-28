@@ -11,7 +11,7 @@ int _printf(const char *format, ...)
 		{'s', print_str},
 		{'d', print_dec},
 		{'i', print_int},
-		{'%', print_perc};
+		{'%', print_char};
 	};
 	int i = 0, j = 0, k = 0, a = 0;
 	va_list list;
@@ -56,6 +56,7 @@ int _printf(const char *format, ...)
 
 void print_char(va_list list)
 {
+
 	_putchar(va_arg(list, int));
 }
 
@@ -102,15 +103,4 @@ void print_int(va_list list)
 
 	m = va_arg(list, int);
 	print_number(m);
-}
-/**
- *print_str - prints a given str
- *@list:string to be printed
- */
-void print_perc(va_list list)
-{
-	char c;
-
-	c = va_arg(list, char *);
-	_putchar(c);
 }
