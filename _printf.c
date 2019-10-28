@@ -1,8 +1,8 @@
-include "holberton.h"
+#include "holberton.h"
 /**
-*_printf- prints element passed
-*@format: list that has the format
-*Return: Integer
+ *_printf- prints element passed
+ *@format: list that has the format
+ *Return: Integer
 */
 int _printf(const char *format, ...)
 {
@@ -37,28 +37,14 @@ int _printf(const char *format, ...)
 					}
 					j++;
 				}
+				j = 0;
 				if (a == 1)
 					i++;
 			}/*Qué pasa sí no después de % no encuentra coincidencias */
 
-			{
-
-
-			}
 		}
-
-
-		while (j < 4)
-		{
-			if (format[i] == hps[j].let)
-			{
-				a = 1;
-				hps[j].fun(list);
-			}
-			j++;
-		}
-		j = 0;
 		i++;
+
 	}
 	printf("\n");
 	va_end(list);
@@ -70,38 +56,61 @@ int _printf(const char *format, ...)
 
 void print_char(va_list list)
 {
-	printf("%c", va_arg(list, int));
+	_putchar(va_arg(list, int));
 }
 
+/**
+ *print_str - prints a given str
+ *@list:string to be printed
+ */
+
+void print_str(va_list list)
+{
+	char *l;
+	int i;
+
+	i = 0;
+	l = va_arg(list, char *);
+        if (l != NULL)
+        {
+		while (l[i] != '\0')
+		{
+			_putchar(l[i]);
+			i++;
+		}
+                return;
+	}
+}
+/**
+ *print_int - prints a given integer
+ *@list: int to be printed
+ */
+void print_dec(va_list list)
+{
+	int l;
+
+	l = va_arg(list, int);
+	print_number(l);
+}
 /**
  *print_int - prints a given integer
  *@list: int to be printed
  */
 void print_int(va_list list)
 {
-	printf("%i", va_arg(list, int));
-}
-/**
- *print_float - prints a given float
- *@list: float to be printed
- */
-void print_float(va_list list)
-{
-	printf("%f", va_arg(list, double));
+	int m;
+
+	m = va_arg(list, int);
+	print_number(m);
 }
 /**
  *print_str - prints a given str
  *@list:string to be printed
  */
-void print_str(va_list list)
+void print_perc(va_list list)
 {
-	char *l;
+	char c;
 
-	l = va_arg(list, char *);
-	if (l != NULL)
-	{
-		printf("%s", l);
-		return;
-	}
-	printf("(nil)");
+	c = va_arg(list, char *);
+	_putchar(c);
 }
