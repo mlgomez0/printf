@@ -1,30 +1,52 @@
-#include "holberton.h"
-
+include "holberton.h"
 /**
- *print_all - prints any type of element passed
- *@format: list that gives the format of each
- */
-void print_all(const char * const format, ...)
+*_printf- prints element passed
+*@format: list that has the format
+*Return: Integer
+*/
+int _printf(const char *format, ...)
 {
-	om_t hps[] = {
+	om_t struc1[] = {
 		{'c', print_char},
-		{'i', print_int},
-		{'f', print_float},
 		{'s', print_str},
+		{'d', print_dec},
+		{'i', print_int},
+		{'%', print_perc};
 	};
-	int i = 0, j = 0, a = 0;
+	int i = 0, j = 0, k = 0, a = 0;
 	va_list list;
 
 	va_start(list, format);
+
 	while (format && format[i])
 	{
-		switch (a)
+		if ((format[i] != '%') && (format[i] != '\\'))
 		{
-			case 1:
-				printf(", ");
-				break;
+			_putchar(format[i]);
 		}
-		a = 0;
+		else
+		{
+			if (format[i] == '%')
+			{
+				while (j < 5)
+				{
+					if (format[i+1] == struc1[j].ele)
+					{
+						struc1[j].func(list);
+						a = 1;
+					}
+					j++;
+				}
+				if (a == 1)
+					i++;
+			}/*Qué pasa sí no después de % no encuentra coincidencias */
+
+			{
+
+
+			}
+		}
+
 
 		while (j < 4)
 		{
