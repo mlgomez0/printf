@@ -11,7 +11,6 @@ int _printf(const char *format, ...)
 		{'s', print_str},
 		{'d', print_dec},
 		{'i', print_int},
-		{'%', print_char};
 	};
 	int i = 0, j = 0, k = 0, a = 0;
 	va_list list;
@@ -28,25 +27,30 @@ int _printf(const char *format, ...)
 		{
 			if (format[i] == '%')
 			{
-				while (j < 5)
+				if (format[i + 1] == '%')
+					_putchar('%);
+				else
 				{
-					if (format[i+1] == struc1[j].ele)
+					while (j < 5)
 					{
-						struc1[j].func(list);
-						a = 1;
+						if (format[i+1] == struc1[j].ele)
+						{
+							struc1[j].func(list);
+							a = 1;
+						}
+						j++;
 					}
-					j++;
-				}
-				j = 0;
-				if (a == 1)
+					j = 0;
+					if (a == 1)
 					i++;
+				}
 			}/*Qué pasa sí no después de % no encuentra coincidencias */
 
 		}
 		i++;
 
 	}
-	printf("\n");
+	return(i);
 	va_end(list);
 }
 /**
@@ -79,8 +83,9 @@ void print_str(va_list list)
 			_putchar(l[i]);
 			i++;
 		}
-                return;
+
 	}
+	return;
 }
 /**
  *print_int - prints a given integer

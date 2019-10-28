@@ -21,6 +21,6 @@ void print_char(va_list list);
 void print_str(va_list list);
 void print_dec(va_list list);
 void print_int(va_list list);
-
+void print_number(int n);
 
 #endif
