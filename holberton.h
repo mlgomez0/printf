@@ -22,5 +22,6 @@ int print_str(va_list list);
 int print_dec(va_list list);
 int print_int(va_list list);
 void print_number(int n);
+int _reviews(char s, va_list list);
 
 #endif
