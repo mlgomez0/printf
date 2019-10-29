@@ -11,16 +11,17 @@
 typedef struct _functions1
 {
 	char ele;
-	void (*func)(va_list);
+	int (*func)(va_list);
 
 } om_t;
 
 int _putchar(char c);
 int _printf(const char *format, ...);
-void print_char(va_list list);
-void print_str(va_list list);
-void print_dec(va_list list);
-void print_int(va_list list);
+int print_char(va_list list);
+int print_str(va_list list);
+int print_dec(va_list list);
+int print_int(va_list list);
 void print_number(int n);
+int _reviews(char s, va_list list);
 
 #endif
