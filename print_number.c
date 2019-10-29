@@ -5,7 +5,7 @@
  *@n:number to be evaluated
  *Return:void
  */
-void print_number(int n)
+int print_number(int n)
 {
 
 	if (n < 0)
@@ -18,4 +18,5 @@ void print_number(int n)
 		print_number(n / 10);
 	}
 	_putchar(n % 10 + '0');
+	return (1);
 }

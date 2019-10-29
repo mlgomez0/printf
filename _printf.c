@@ -26,6 +26,12 @@ int _printf(const char *format, ...)
 			{
 				s = format[i + 1];
 				rec = _reviews(s, list);
+				if (rec == 0)
+				{
+					_putchar('%');
+					_putchar(s);
+					cont++;
+				}
 				if (rec > 0)
 					cont = cont - 1;
 			}
@@ -36,6 +42,6 @@ int _printf(const char *format, ...)
 			_putchar(format[i]);
 		i++;
 	}
-	return (cont + m);
 	va_end(list);
+	return (cont + m);
 }

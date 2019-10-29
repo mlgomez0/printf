@@ -8,7 +8,7 @@
 int print_char(va_list list)
 {
 	_putchar(va_arg(list, int));
-	return (0);
+	return (1);
 }
 /**
 *print_str - prints a given string
@@ -40,7 +40,7 @@ int print_str(va_list list)
 			_putchar(x[j]);
 			j++;
 		}
-		return (6);
+		return (j);
 	}
 
 }
@@ -52,10 +52,11 @@ int print_str(va_list list)
 int print_dec(va_list list)
 {
 	int l;
+	int m;
 
 	l = va_arg(list, int);
-	print_number(l);
-	return (0);
+		m = print_number(l);
+	return (m);
 }
 
 /**
@@ -66,10 +67,11 @@ int print_dec(va_list list)
 int print_int(va_list list)
 {
 	int m;
+	int l;
 
 	m = va_arg(list, int);
-	print_number(m);
-	return (0);
+	l = print_number(m);
+	return (l);
 }
 
 /**
