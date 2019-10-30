@@ -1,0 +1,52 @@
+.TH man 1 "29 Oct 2018" "0.1" "printf man page"
+.SH PRINTF
+.B _printf
+- print data
+.SH SYNOPSIS
+# include "holberton.h"
+int _printf(const char *format, ...);
+_printf FORMAT [ARGUMENTS]...
+
+.SH DESCRIPTION
+_printf is a function in C programming language which is available in holberton.h library._printf() function is used to print the "character, string, decimal, integer" into the output screen, using differents format specifier.
+
+.SH OPTIONS
+Print Argument(s) according to FORMAT.
+
+_printf() function uses %c format specifier to print a single character.
+_printf() function uses %s format specifier to print a string of characters.
+_printf() function uses %d format specifier to print the value of a decimal (base 10) number.
+_printf() function uses %i format specifier to print the value of an integer in base 10.
+
+FORMAT controls the output as in C _printf. Interpreted sequences are:
+	\"     double quote
+
+       \\     backslash
+
+       \a     alert (BEL)
+
+       \b     backspace
+
+       \c     produce no further output
+
+       \e     escape
+
+       \f     form feed
+
+       \n     new line
+
+       \r     carriage return
+
+       \t     horizontal tab
+
+       \v     vertical tab
+
+        %%    A % followed by another % character will print a single %
+	ARGUMENT as a string with '\'.
+
+.SH SEE ALSO
+.I printf(3)
+.SH BUGS
+_printf() function does´t have some functions.
+.SH AUTHOR
+Written by Yulieth Zuluaga and Mary Gomez
