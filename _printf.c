@@ -16,12 +16,11 @@ int _printf(const char *format, ...)
 	while (format && format[i])
 	{
 		cont++;
+		rec = 0;
 		if (format[i] == '%')
 		{
 			if (format[i + 1] == '%')
-			{
 				_putchar('%');
-			}
 			else
 			{
 				s = format[i + 1];
@@ -32,8 +31,10 @@ int _printf(const char *format, ...)
 					_putchar(s);
 					cont++;
 				}
-				if (rec > 0)
+				if (rec > 0 || rec == -1)
 					cont = cont - 1;
+				if (rec == -1)
+					rec = 0;
 			}
 			m = m + rec;
 			i++;
