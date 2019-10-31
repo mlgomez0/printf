@@ -24,16 +24,16 @@ int print_str(va_list list)
 	i = 0;
 	j = 0;
 	l = va_arg(list, char *);
-	if (l != NULL)
+	if (l != NULL && l[0] != '\0')
 	{
-		while (l[i] != '\0')
+		while (l[i])
 		{
 			_putchar(l[i]);
 			i++;
 		}
 		return (i);
 	}
-	else
+	else if (l == NULL)
 	{
 		while (j < 6)
 		{
@@ -42,8 +42,14 @@ int print_str(va_list list)
 		}
 		return (j);
 	}
-
+	else
+	{
+		if (l[0] == '\0')
+		return (-1);
+	}
+	return (0);
 }
+
 /**
 *print_dec - prints a given decimal base 10
 *@list: int to be printed
