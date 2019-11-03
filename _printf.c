@@ -7,7 +7,6 @@
 int _printf(const char *format, ...)
 {
 	int i = 0, rec = 0, m = 0, cont = 0;
-	char s;
 	va_list list;
 
 	va_start(list, format);
@@ -19,16 +18,17 @@ int _printf(const char *format, ...)
 		rec = 0;
 		if (format[i] == '%')
 		{
-			if (format[i + 1] == '%')
+			if (format[i + 1] == '\0')
+				return (-1);
+			else if (format[i + 1] == '%')
 				_putchar('%');
 			else
 			{
-				s = format[i + 1];
-				rec = _reviews(s, list);
+				rec = _reviews(format[i + 1], list);
 				if (rec == 0)
 				{
 					_putchar('%');
-					_putchar(s);
+					_putchar(format[i + 1]);
 					cont++;
 				}
 				if (rec > 0 || rec == -1)
